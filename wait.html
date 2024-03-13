@@ -26,6 +26,17 @@
   </div>
 
   <script>
+    // Function to pad minutes and seconds with leading zeros
+    function pad(val) {
+      var valString = val + "";
+      if (valString.length < 2) {
+        return "0" + valString;
+      } else {
+        return valString;
+      }
+    }
+
+    // Countdown timer logic
     window.onload = function() {
       var timerElement = document.getElementById('timer');
       var totalSeconds = 180; // 3 minutes
@@ -46,14 +57,11 @@
       }, 1000);
     };
 
-    function pad(val) {
-      var valString = val + "";
-      if (valString.length < 2) {
-        return "0" + valString;
-      } else {
-        return valString;
-      }
-    }
+    // Disable going back to login page using back button
+    window.history.pushState(null, '', window.location.href);
+    window.onpopstate = function(event) {
+      window.history.pushState(null, '', window.location.href);
+    };
   </script>
 </body>
 </html>
